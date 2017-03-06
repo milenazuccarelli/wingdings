@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<head>
+	<title>Laying in bed texting and my phone falls on my face</title>
+
+	<style>
+        body {
+        	background: #000;
+        	margin: 0 4em 10% 4em;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        #full-wrap {
+        	background: #000;
+        	height: 100%;
+        	overflow: hidden;
+        }
+
+        #wrap {
+        	background: #000;
+        	height: 100%;
+        	overflow-y: scroll;
+			overflow-x: hidden;
+        }
+
+		.bubble {
+			font-size: 25px;
+			width: 100%;
+			font-family: "Space Mono";
+			letter-spacing: 1px;
+			padding: 10px;
+			/*margin-bottom: 6px;*/
+		}
+
+		.left { float: left; text-align: left; }
+		.right { float: right; text-align: right; color: #6b80f9; }
+
+		/* will need to create a nested div */
+
+		#text-box {
+			font-family: wingdings;
+			position: fixed;
+			right: calc(50% - 250px);
+			width: 500px;
+			bottom: 60px;
+			/* background-color: salmon; */
+			text-transform: lowercase;
+		}
+
+		input {
+			width: 100%;
+			font-family: wingdings;
+			font-size: 50px;
+			background: transparent;
+			border: none;
+            color: #fff;
+		}
+
+		span.squiggle {
+			font-size: 60px;
+			line-height: 30px;
+    		position: fixed;
+   			z-index: -9999;
+		}
+
+        #btn {
+            display: none;
+
+        }
+
+        textarea:focus, input:focus, *:focus {
+  			outline: none;
+		}
+	</style>
+
+	<script>
+
+    //pops off when this shit loads (don't bother me i'm working!!!!!!!!!!!!!!!!!!)
+    document.addEventListener('DOMContentLoaded', function() {
+        for(var i = 1; i < 27; i++) {
+           var sound = document.getElementById("sound" + i);
+        }
+        
+
+    }, false);
+
+
+	var left = true;
+	/* function checkSubmit(e) {
+	    if(e && e.keyCode == 13) {
+	   	  var x = document.forms.namedItem("wd_message").innerHTML;
+	   	  console.log(x);
+
+	      document.forms[0].submit();
+	   }
+	} */
+
+	function addMessage(message) {
+        document.getElementById("message").value = "";
+	    console.log("yo");
+	   	console.log(message);
+	   	var new_message = document.createElement("div")
+	   	if(left){
+	   		new_message.className = "bubble left";
+	   		left = false;
+	   	} else { /*this means it's a right message*/
+	   		new_message.className = "bubble right";
+	   		left = true;
+	   	}
+	   	new_message.innerHTML = message;
+	   	document.getElementById('wrap').appendChild(new_message);
+        window.scrollTo(0,document.getElementById('wrap').scrollHeight);
+	}
+
+    function searchKeyPress(e) {
+        // look for window.event in case event isn't passed in
+        e = e || window.event;
+        if (e.keyCode == 13)
+        {  
+            document.getElementById("sound21").play();
+            document.getElementById('btn').click();
+            return false;
+        } else {
+            coolSound();
+        }
+        return true;
+    }
+
+    function coolSound() {
+        var sus = getRandomInt(1,26);
+        console.log(sus);
+        var sound = document.getElementById("sound" + sus );
+        sound.play();
+    }
+
+
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+	</script>
+
+
+</head>
+<body>
+		<div id="full-wrap">
+	<div id="wrap">
+	<!-- onKeyPress="return checkSubmit(event)" -->
+	<div  id='text-box'>
+
+	<form id="wd_message" onSubmit="return false;">
+		<input type="text" name="message" id='message' autocomplete="off" onkeypress="return searchKeyPress(event);">
+		<span class="squiggle">〰〰〰〰〰〰〰〰</span>
+</form>
+<button id="btn" onclick="addMessage(document.getElementById('message').value)">Send</button>
+
+	</div>
+</div>
+</div>
+
+<!-- ugly stuff soz -->
+<audio id="sound1" src="sounds/sound1.wav" type="audio/wav">
+<audio id="sound2" src="sounds/sound2.wav" type="audio/wav">
+<audio id="sound3" src="sounds/sound3.wav" type="audio/wav">
+<audio id="sound4" src="sounds/sound4.wav" type="audio/wav">
+<audio id="sound5" src="sounds/sound5.wav" type="audio/wav">
+<audio id="sound6" src="sounds/sound6.wav" type="audio/wav">
+<audio id="sound7" src="sounds/sound7.wav" type="audio/wav">
+<audio id="sound8" src="sounds/sound8.wav" type="audio/wav">
+<audio id="sound9" src="sounds/sound9.wav" type="audio/wav">
+<audio id="sound10" src="sounds/sound10.wav" type="audio/wav">
+<audio id="sound11" src="sounds/sound11.wav" type="audio/wav">
+<audio id="sound12" src="sounds/sound12.wav" type="audio/wav">
+<audio id="sound13" src="sounds/sound13.wav" type="audio/wav">
+<audio id="sound14" src="sounds/sound14.wav" type="audio/wav">
+<audio id="sound15" src="sounds/sound15.wav" type="audio/wav">
+<audio id="sound16" src="sounds/sound16.wav" type="audio/wav">
+<audio id="sound17" src="sounds/sound17.wav" type="audio/wav">
+<audio id="sound18" src="sounds/sound18.wav" type="audio/wav">
+<audio id="sound19" src="sounds/sound19.wav" type="audio/wav">
+<audio id="sound20" src="sounds/sound20.wav" type="audio/wav">
+<audio id="sound21" src="sounds/sound21.wav" type="audio/wav">
+<audio id="sound22" src="sounds/sound22.wav" type="audio/wav">
+<audio id="sound23" src="sounds/sound23.wav" type="audio/wav">
+<audio id="sound24" src="sounds/sound24.wav" type="audio/wav">
+<audio id="sound25" src="sounds/sound25.wav" type="audio/wav">
+<audio id="sound26" src="sounds/sound26.wav" type="audio/wav">
+<!------->
+
+</body>
+</html>
